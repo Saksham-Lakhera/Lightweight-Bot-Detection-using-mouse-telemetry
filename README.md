@@ -1,6 +1,6 @@
 # 🖱️ Lightweight Bot Detection using Mouse Movement
 
-A smart, scalable, and ultra-lightweight proof-of-concept that detects bots using only mouse telemetry and **5 simple math operations** — no need for server-side deep learning.
+A smart, scalable, and ultra-lightweight proof-of-concept that detects bots using only mouse telemetry and **4 simple math operations** — no need for server-side deep learning.
 
 **By Saksham Lakhera**
 
@@ -15,7 +15,7 @@ This system distinguishes between human and bot users based on their natural mou
 - Tracks mouse telemetry (x, y, dt) in the browser.
 - Runs a compressed model in JavaScript using ONNX.
 - Sends latent vector `[x1, x2]` to Flask backend.
-- Backend uses **5 simple math operations** to predict: **human or bot**.
+- Backend uses **4 simple math operations** to predict: **human or bot**.
 - Sets a cookie based on result — updates view accordingly.
 
 ---
@@ -138,5 +138,5 @@ These are **not required** to run the detection server.
 ## 📖 Read More
 
 For a detailed walkthrough and explanation, check out the full blog post on Medium:  
-👉 [Built a Bot Detection System with Just 5 Simple Calculations](https://medium.com/@sakshamlakhera/built-a-bot-detection-system-with-just-5-simple-calculations-8409717da585)
+👉 [Built a Bot Detection System with Just 4 Simple Calculations](https://medium.com/@sakshamlakhera/built-a-bot-detection-system-with-just-5-simple-calculations-8409717da585)
 
