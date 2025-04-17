@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Human</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #27ae60;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+        }
+
+        h3 {
+            margin-top: 25px;
+            color: #555;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .highlight {
+            background-color: #ecf0f1;
+            padding: 10px 15px;
+            border-left: 4px solid #27ae60;
+            margin-top: 15px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+        .footer {
+            margin-top: 60px;
+            color: #888;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        p {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Welcome Human!</h1>
+
+<p>
+    This website uses intelligent mouse telemetry analysis to distinguish between humans and automated bots.
+    By tracking your natural mouse movement patterns — (x, y coordinates and the time between movements) — we aim to stop automated scripts from scraping or abusing this platform.
+</p>
+
+<h2>Why Companies Use This?</h2>
+<p>
+    Many modern companies deploy similar strategies to prevent scraping of sensitive data or automated abuse.
+    However, there’s an important challenge:
+</p>
+
+<div class="highlight">
+    Performing machine learning on millions of mouse telemetry sequences is extremely resource-intensive.
+</div>
+
+<h2>Is Machine Learning Always Needed?</h2>
+<p>
+    Not really. Sophisticated bots can parse your JavaScript and mimic human-like telemetry. Running heavy models for every telemetry input is both unnecessary and expensive.
+</p>
+
+<h2>But Why Avoid Full ML on Server?</h2>
+
+<p>
+    Let's assume we use even a simple neural network on the server:
+</p>
+
+<div class="highlight">
+    Input → 20 telemetry points (x, y, time) → 3 features each → Total 20 x 3 = 60 inputs
+</div>
+
+<p>
+    Now let's say the model has:
+</p>
+
+<ul>
+    <li>First Layer: 60 inputs → 40 neurons</li>
+    <li>Second Layer: 40 → 20 neurons</li>
+    <li>Final Output Layer: 20 → 1 neuron (human/bot)</li>
+</ul>
+
+<h3>Operations Count:</h3>
+
+<p>
+    Multiply-Add operations per request:
+</p>
+
+<ul>
+    <li>First Layer: 60 x 40 = 2400 ops</li>
+    <li>Second Layer: 40 x 20 = 800 ops</li>
+    <li>Final Layer: 20 x 1 = 20 ops</li>
+</ul>
+
+<div class="highlight">
+    Total = 2400 + 800 + 20 = 3220 multiply-add operations per request.
+</div>
+
+<p>
+    Now imagine 1 million bot requests hammering your server — 
+</p>
+
+<div class="highlight">
+    3220 x 1,000,000 = 3.2 Billion operations 
+</div>
+
+<p>
+    And all that just to check mouse movements.
+</p>
+
+<h2>Why Latent Representation is Smart?</h2>
+
+<p>
+    With latent space encoding (done on client-side browser JS), we send just 2 or 3 features to the server.
+</p>
+
+<p>
+    Final computation becomes:
+</p>
+
+<div class="highlight">
+    sigmoid(w0 + w1 * x1 + w2 * x2)
+</div>
+
+<p>
+    Barely 5 operations.
+</p>
+
+<h3>Benefit?</h3>
+
+<ul>
+    <li>Massive reduction in server computation cost.</li>
+    <li>Super low latency — critical for real-time systems.</li>
+    <li>Easy to implement in C/C++ or embedded systems.</li>
+</ul>
+
+<h2>What About Sophisticated Bots?</h2>
+<p>
+    Well-designed systems use multiple layers of defense — beyond telemetry. Packet analysis, behavioral checks, and anomaly detection at network layers are used for advanced bot mitigation.
+</p>
+
+<h2>Takeaway for Engineers:</h2>
+<ul>
+    <li>Don’t always throw big ML models at every problem.</li>
+    <li>Be compute-smart: Use latent space representations.</li>
+    <li>Reduce server load — Avoid wasting money on unnecessary ML inference.</li>
+    <li>Latency improves, infra cost drops, and detection stays effective.</li>
+</ul>
+<h2>Want to Verify Again?</h2>
+
+<p>
+    If you want to go through the verification process again, you need to clear the cookies stored in your browser.</p>
+
+<h3>How To Clear Cookies?</h3>
+
+<ul>
+    <li>Right-click on the page → Inspect → Application Tab → Storage → Cookies → Delete</li>
+    <li>Or</li>
+    <li>Go to Browser Settings → Privacy & Security → Clear Cookies for this site</li>
+</ul>
+
+<h3>Optional: Hard Reload (To Clear Cache)</h3>
+
+<p>
+    If the page still looks outdated or broken due to cached files, you can force a hard reload:
+</p>
+
+<ul>
+    <li><b>Windows/Linux:</b> Press <span class="highlight">Ctrl + Shift + R</span> or <span class="highlight">Ctrl + F5</span></li>
+    <li><b>MacOS:</b> Press <span class="highlight">Cmd + Shift + R</span></li>
+</ul>
+
+<div class="highlight">
+    Note: Hard Reload clears cache but does not clear cookies.
+</div>
+
+<div class="footer">
+    Built by Saksham Lakhera — Exploring how data, machine learning & engineering come together to build secure and scalable products.
+</div>
+
+</div>
+
+</body>
+</html>
