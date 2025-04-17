@@ -135,3 +135,8 @@ Refer to files in `analysisFiles/` folder:
 These are **not required** to run the detection server.
 
 ---
+## 📖 Read More
+
+For a detailed walkthrough and explanation, check out the full blog post on Medium:  
+👉 [Built a Bot Detection System with Just 5 Simple Calculations](https://medium.com/@sakshamlakhera/built-a-bot-detection-system-with-just-5-simple-calculations-8409717da585)
+
